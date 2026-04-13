@@ -86,7 +86,15 @@ export default function WorksTunnel() {
       });
 
       // Animate the Side Scale Progress Line
-      tl.to(".progress-fill", { height: "100%", ease: "none" }, 0);
+      tl.to(
+        ".progress-fill",
+        {
+          height: "100%",
+          width: "100%",
+          ease: "none",
+        },
+        0,
+      );
 
       // Step 1: The First Intro Title grows from 0 to 1 on first scroll
       tl.to(items[0], {
@@ -130,12 +138,33 @@ export default function WorksTunnel() {
       className="relative h-screen w-full bg-zinc-950 overflow-hidden flex items-center justify-center"
     >
       {/* THE SIDE SCALE TRACKER (Only handles the dots and progress line) */}
-      <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 h-[40vh] w-1 bg-zinc-800 rounded-full z-50 flex flex-col justify-between items-center py-0 hidden md:flex">
+      <div
+        className="
+    absolute 
+    
+    /* ✅ MOBILE (top horizontal centered) */
+    top-4 left-1/2 -translate-x-1/2 w-[80vw] h-1 flex-row
+    
+    /* ✅ DESKTOP (right vertical) */
+    md:top-1/2 md:left-auto md:right-10 md:-translate-x-0 md:-translate-y-1/2 md:h-[40vh] md:w-1 md:flex-col
+    
+    bg-zinc-800 rounded-full z-50 flex justify-between items-center
+  "
+      >
+        {/* Progress fill */}
         <div
-          className="progress-fill absolute top-0 left-0 w-full bg-amber-500 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]"
-          style={{ height: "0%" }}
+          className="
+      progress-fill 
+      absolute 
+      md:top-0 md:left-0 md:w-full md:h-[0%]
+      
+      top-0 left-0 h-full w-[0%]
+      
+      bg-amber-500 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]
+    "
         ></div>
-        {/* Render only the dots here */}
+
+        {/* Dots */}
         {tunnelItems.map((_, idx) => (
           <div
             key={`dot-${idx}`}

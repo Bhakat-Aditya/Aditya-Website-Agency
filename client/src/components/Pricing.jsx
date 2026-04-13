@@ -182,7 +182,7 @@ export default function Pricing() {
             {[...terms, ...terms].map((term, i) => (
               <p
                 key={i}
-                className="text-2xl font-mono tracking-widest text-zinc-600 uppercase text-center"
+                className="text-sm md:text-2xl font-mono tracking-widest text-zinc-600 uppercase text-center"
               >
                 {term}
               </p>

@@ -1,14 +1,27 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function CustomCursor() {
   const cursorRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  // Detect if device supports mouse (not touch)
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(pointer: fine)");
+    setIsDesktop(mediaQuery.matches);
+
+    const handleChange = () => setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   useGSAP(() => {
+    if (!isDesktop) return; // ❌ Don't run on mobile
+
     const cursor = cursorRef.current;
 
-    // Instant movement (NO lag)
     const moveCursor = (e) => {
       gsap.set(cursor, {
         x: e.clientX,
@@ -18,14 +31,12 @@ export default function CustomCursor() {
 
     window.addEventListener("pointermove", moveCursor);
 
-    // Hover animations WITHOUT React state
     const handleMouseOver = (e) => {
       if (e.target.closest(".cursor-hover")) {
         gsap.to(cursor, {
           scale: 3,
           opacity: 0.5,
           duration: 0.2,
-          ease: "power2.out",
         });
       }
     };
@@ -36,7 +47,6 @@ export default function CustomCursor() {
           scale: 1,
           opacity: 1,
           duration: 0.2,
-          ease: "power2.out",
         });
       }
     };
@@ -49,7 +59,10 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []);
+  }, [isDesktop]);
+
+  // ❌ Don't render at all on mobile
+  if (!isDesktop) return null;
 
   return (
     <div
