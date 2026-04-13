@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import projectsData from '../data/portfolio.json';
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import projectsData from "../data/portfolio.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Safe Image Loader (Unchanged - works perfectly)
+// 1. Safe Image Loader
 const SafeImage = ({ src, alt, accentColor }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -16,22 +16,30 @@ const SafeImage = ({ src, alt, accentColor }) => {
       {!isLoaded && !hasError && (
         <div className="absolute flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full border-4 border-zinc-700 border-t-zinc-300 animate-spin"></div>
-          <span className="text-xs font-mono text-zinc-500 tracking-widest">LOADING ASSET...</span>
+          <span className="text-xs font-mono text-zinc-500 tracking-widest">
+            LOADING ASSET...
+          </span>
         </div>
       )}
       {hasError && (
         <div className="absolute flex flex-col items-center gap-2">
-          <span className="text-xs font-mono text-zinc-600 tracking-widest">ASSET NOT FOUND</span>
+          <span className="text-xs font-mono text-zinc-600 tracking-widest">
+            ASSET NOT FOUND
+          </span>
         </div>
       )}
       <img
         src={src}
         alt={alt}
+        decoding="async" /* THIS STOPS THE IMAGE FROM FREEZING THE SCROLL */
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
       />
-      <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ backgroundColor: accentColor }}></div>
+      <div
+        className="absolute inset-0 opacity-20 mix-blend-overlay"
+        style={{ backgroundColor: accentColor }}
+      ></div>
     </div>
   );
 };
@@ -41,101 +49,142 @@ export default function WorksTunnel() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Combine an intro title screen with your JSON projects
+  // The Slides Array
   const tunnelItems = [
-    { id: 'intro', isIntro: true, title: 'SEE MY WORKS' },
-    ...projectsData
+    { id: "intro1", isIntro: true, title: "SEE MY WORKS" },
+    { id: "intro2", isBonglishPitch: true, title: "The Capability Pitch" },
+    ...projectsData,
   ];
 
-  useGSAP(() => {
-    const items = gsap.utils.toArray('.tunnel-item');
-    const totalItems = items.length;
+  useGSAP(
+    () => {
+      const items = gsap.utils.toArray(".tunnel-item");
+      const totalItems = items.length;
 
-    // 0 EXISTENCE: Start everything tiny (scale 0) and invisible
-    gsap.set(items, { opacity: 0, scale: 0, transformOrigin: "center center" });
+      // 0 EXISTENCE: Start everything tiny (scale 0) and invisible
+      gsap.set(items, {
+        opacity: 0,
+        scale: 0,
+        transformOrigin: "center center",
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: `+=${totalItems * 120}%`, // Scroll length based on how many projects you have
-        pin: true,
-        scrub: 1, // Smooth lag
-        onUpdate: (self) => {
-          // Calculate which dot should be glowing on the side scale
-          const currentIdx = Math.min(Math.floor(self.progress * totalItems), totalItems - 1);
-          setActiveIndex(currentIdx);
-        }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: `+=${totalItems * 120}%`,
+          pin: true,
+          scrub: 1,
+          onUpdate: (self) => {
+            const currentIdx = Math.min(
+              Math.floor(self.progress * totalItems),
+              totalItems - 1,
+            );
+            setActiveIndex(currentIdx);
+          },
+        },
+      });
+
+      // Animate the Side Scale Progress Line
+      tl.to(".progress-fill", { height: "100%", ease: "none" }, 0);
+
+      // Step 1: The First Intro Title grows from 0 to 1 on first scroll
+      tl.to(items[0], {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // Step 2: Loop through all items and make them fly past the camera
+      for (let i = 0; i < totalItems - 1; i++) {
+        tl.to(
+          items[i],
+          {
+            scale: 5, // Flies past the screen
+            opacity: 0,
+            duration: 1,
+            ease: "power2.inOut",
+          },
+          `sync${i}`,
+        ).to(
+          items[i + 1],
+          {
+            scale: 1, // Next item grows from 0 to 1
+            opacity: 1,
+            duration: 1,
+            ease: "power2.inOut",
+          },
+          `sync${i}`,
+        );
       }
-    });
 
-    // Animate the Side Scale Progress Line
-    tl.to('.progress-fill', { height: '100%', ease: 'none' }, 0);
-
-    // Step 1: The Intro Title grows from 0 to 1 on first scroll
-    tl.to(items[0], { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' });
-
-    // Step 2: Loop through all items and make them fly past the camera
-    for (let i = 0; i < totalItems - 1; i++) {
-      tl.to(items[i], { 
-          scale: 5, // Flies past the screen
-          opacity: 0, 
-          duration: 1, 
-          ease: "power2.inOut" 
-        }, `sync${i}`) 
-        .to(items[i + 1], { 
-          scale: 1, // Next item grows from 0 to 1
-          opacity: 1, 
-          duration: 1, 
-          ease: "power2.inOut" 
-        }, `sync${i}`);
-    }
-
-    // Small pause at the end so the last card doesn't vanish instantly
-    tl.to(items[totalItems - 1], { opacity: 1, duration: 0.5 }); 
-
-  }, { scope: containerRef });
+      tl.to(items[totalItems - 1], { opacity: 1, duration: 0.5 });
+    },
+    { scope: containerRef },
+  );
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full bg-zinc-950 overflow-hidden flex items-center justify-center">
-      
-      {/* --- THE SIDE SCALE TRACKER --- */}
-      <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 h-[40vh] w-1 bg-zinc-800 rounded-full z-50 flex flex-col justify-between items-center py-0">
-        {/* The growing blue line */}
-        <div className="progress-fill absolute top-0 left-0 w-full bg-blue-500 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.8)]" style={{ height: '0%' }}></div>
-        
-        {/* The glowing dots */}
+    <section
+      ref={containerRef}
+      className="relative h-screen w-full bg-zinc-950 overflow-hidden flex items-center justify-center"
+    >
+      {/* THE SIDE SCALE TRACKER (Only handles the dots and progress line) */}
+      <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 h-[40vh] w-1 bg-zinc-800 rounded-full z-50 flex flex-col justify-between items-center py-0 hidden md:flex">
+        <div
+          className="progress-fill absolute top-0 left-0 w-full bg-amber-500 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]"
+          style={{ height: "0%" }}
+        ></div>
+        {/* Render only the dots here */}
         {tunnelItems.map((_, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={`dot-${idx}`}
             className={`w-3 h-3 rounded-full z-10 transition-all duration-500 ${
-              activeIndex === idx ? 'bg-white shadow-[0_0_15px_white] scale-150' : 'bg-zinc-700 scale-100'
-            }`} 
+              activeIndex === idx
+                ? "bg-white shadow-[0_0_15px_white] scale-150"
+                : "bg-zinc-700 scale-100"
+            }`}
           />
         ))}
       </div>
 
-      {/* --- THE TUNNEL ITEMS --- */}
+      {/* THE TUNNEL ITEMS (Rendered in the center of the screen) */}
       {tunnelItems.map((item) => (
-        <div 
-          key={item.id} 
+        <div
+          key={item.id}
           className="tunnel-item absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 md:w-[70vw] max-w-6xl flex items-center justify-center cursor-hover"
+          style={{
+            willChange: "transform, opacity",
+            backfaceVisibility: "hidden",
+          }}
         >
           {item.isIntro ? (
-            // THE INTRO TEXT
+            // 1st SLIDE: "SEE MY WORKS"
             <h2 className="text-5xl md:text-8xl lg:text-9xl font-black text-center tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-600">
               {item.title}
             </h2>
+          ) : item.isBonglishPitch ? (
+            // 2nd SLIDE: NEW BONGLISH PITCH
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-center tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 max-w-4xl leading-tight drop-shadow-2xl">
+              "Eta dekhle apni clear idea peye jaben ami apnar website koto
+              bhalo banate pari."
+            </h2>
           ) : (
-            // THE PROJECT CARDS
-            <div className="w-full flex flex-col md:flex-row gap-8 items-center bg-zinc-900/40 p-6 md:p-10 rounded-3xl border border-zinc-800/50 backdrop-blur-sm">
-              
+            // REST OF SLIDES: THE PROJECT CARDS
+            <div className="w-full flex flex-col md:flex-row gap-8 items-center bg-zinc-900 p-6 md:p-10 rounded-3xl border border-zinc-800 shadow-2xl">
               <div className="w-full md:w-1/2 h-48 md:h-[400px]">
-                <SafeImage src={item.imagePath} alt={item.title} accentColor={item.accentColor} />
+                <SafeImage
+                  src={item.imagePath}
+                  alt={item.title}
+                  accentColor={item.accentColor}
+                />
               </div>
 
-              <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <p className="text-xs font-bold tracking-widest mb-2" style={{ color: item.accentColor }}>
+              <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
+                <p
+                  className="text-xs font-bold tracking-widest mb-2"
+                  style={{ color: item.accentColor }}
+                >
                   {item.clientType}
                 </p>
                 <h3 className="text-3xl md:text-5xl font-black text-white mb-4 leading-none tracking-tighter">
@@ -144,19 +193,29 @@ export default function WorksTunnel() {
                 <p className="text-zinc-400 text-base md:text-lg mb-6">
                   {item.shortPitch}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-8">
                   {item.techStack.map((tech, index) => (
-                    <span key={index} className="px-3 py-1 bg-zinc-950 text-zinc-300 text-xs rounded-full border border-zinc-800">
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-zinc-950 text-zinc-300 text-xs rounded-full border border-zinc-800"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <button className="group flex items-center gap-2 w-fit px-6 py-3 bg-white text-black font-bold rounded-full transition-transform hover:scale-105">
+                <a
+                  href={item.liveLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-2 w-fit px-6 py-3 bg-white text-black font-bold rounded-full transition-transform hover:scale-105"
+                >
                   Explore Project
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </a>
               </div>
             </div>
           )}

@@ -10,3 +10,27 @@
     cursor: none; 
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px; /* Slim and sleek */
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b; /* Tailwind zinc-950 - blends with your background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46; /* Tailwind zinc-700 */
+  border-radius: 10px;
+  border: 2px solid #09090b; /* Creates a nice padding effect around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fbbf24; /* Changes to your Empire Amber on hover! */
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 #09090b;
+}

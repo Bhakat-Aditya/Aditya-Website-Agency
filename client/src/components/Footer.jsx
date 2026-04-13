@@ -15,7 +15,7 @@ export default function Footer() {
 
   // The Boilerplate Template (URL Encoded for links)
   // The Boilerplate Template (URL Encoded for links)
-  const rawTemplate = `Hello Aditya,\n\nI am looking to get a website for my business. Here are my details:\n\nName: \nMobile Number: \nBusiness Name: \nWhat I need: \n\nThanks!`;
+  const rawTemplate = `Hello Aditya,\n\nI am looking to get a website for my business. Here are my details:\n\nName: \nMobile Number: \nBusiness Name: \nPlan: \nWhat I need: \n\nThanks!`;
   const emailSubject = encodeURIComponent("Enquiry for website");
   const encodedTemplate = encodeURIComponent(rawTemplate);
 
