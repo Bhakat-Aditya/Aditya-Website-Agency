@@ -200,10 +200,10 @@ export default function Hero() {
       <div className="relative z-30 flex flex-col items-center justify-center w-full px-4 text-center mt-[-5vh] pointer-events-none">
         <h1 className="flex flex-col items-center justify-center leading-none tracking-tighter uppercase font-black drop-shadow-2xl">
           <span className="hero-text text-6xl md:text-8xl lg:text-[10rem] text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400">
-            Rule Your
+            ADITYA
           </span>
-          <span className="hero-text text-6xl md:text-8xl lg:text-[10rem] text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 mt-[-2%]">
-            Empire.
+          <span className="hero-text text-5xl md:text-6xl lg:text-[10rem] text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 mt-[-2%]">
+            WEB AGENCY.
           </span>
         </h1>
 
