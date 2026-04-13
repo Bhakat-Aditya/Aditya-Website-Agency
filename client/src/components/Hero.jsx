@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const PRO_QUOTES = [
+const PRO_QUOTES_MOBILE = [
   "24/7 Open for Business",
   "Dokan bondho holeo website khola thakbe",
   "Build Instant Trust",
@@ -23,6 +23,28 @@ const PRO_QUOTES = [
   "Sob details ek jaigai thakbe",
   "Dominate Local Searches",
   "Trust barle business barbe",
+];
+const PRO_QUOTES = [
+  "Still waiting for customers? Naki customer ke attract korte ready?",
+  "Apnar business ki Google e dekha jai? Naki completely invisible?",
+  "Customers khuje pachhe na apnake… naki apni online e nei?",
+  "First impression ta ki powerful hocche? Naki ignore kore chole jacche?",
+  "Apnar competitor online e sell korche… apni ekhono offline e atke?",
+  "Website chara business mane half potential wasted.",
+  "Jodi customer apnake na pay, se competitor ke peye jabe.",
+  "You don’t need more effort… you need a smarter system.",
+  "Business ta grow korte chan? Tahole online presence mandatory.",
+  "Trust build korte hole professional look dorkar—achhe?",
+  "Apnar dokan ki 24/7 open? Naki raat hole income bondho?",
+  "Website hocche apnar digital salesman—kaaj korche naki?",
+  "People judge your business in 3 seconds… ready achen?",
+  "Offline theke online e na ashle growth thame jabe.",
+  "Customer jodi apnar website dekhe impressed na hoy, chole jabe.",
+  "Apnar brand ki premium feel dey? Naki normal lagche?",
+  "More visibility = more customers = more sales. Simple math.",
+  "Apni ki lead miss korchen sudhu website na thakar jonno?",
+  "A strong website = nonstop leads. Apnar ta ready?",
+  "Aaj invest korun, kal theke automated income start korun.",
 ];
 
 const BUBBLE_ZONES = [
@@ -167,8 +189,10 @@ export default function Hero() {
       let index = 0;
 
       const showQuotes = () => {
-        mobileQuotes[0].innerText = PRO_QUOTES[index % PRO_QUOTES.length];
-        mobileQuotes[1].innerText = PRO_QUOTES[(index + 1) % PRO_QUOTES.length];
+        mobileQuotes[0].innerText =
+          PRO_QUOTES_MOBILE[index % PRO_QUOTES_MOBILE.length];
+        mobileQuotes[1].innerText =
+          PRO_QUOTES_MOBILE[(index + 1) % PRO_QUOTES_MOBILE.length];
 
         index += 2;
 
