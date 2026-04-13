@@ -5,28 +5,48 @@
     "clientType": "Sports & Recreation",
     "shortPitch": "A fast, animated booking interface to maximize daily slot reservations.",
     "techStack": ["React", "Tailwind v4", "GSAP"],
-    "imagePath": "/src/assets/projects/turf-preview.jpg",
-    "liveLink": "https://your-live-link.com",
+    "imagePath": "/powerplay.png",
+    "liveLink": "https://powerplayturf.vercel.app/",
     "accentColor": "#10b981" 
   },
   {
     "id": 2,
-    "title": "Bhakat Hardware Engine",
-    "clientType": "B2B Wholesale",
-    "shortPitch": "Smart inventory showcase focused on high-volume, direct-to-site materials.",
+    "title": "Time For Woodfire",
+    "clientType": "Pizza Dine-In & Delivery",
+    "shortPitch": "A warm, inviting website with smooth animations to showcase the menu and ambiance.",
     "techStack": ["MERN", "Tailwind v4"],
-    "imagePath": "/src/assets/projects/hardware-preview.jpg",
-    "liveLink": "https://your-live-link.com",
+    "imagePath": "/woodfire.png",
+    "liveLink": "https://time-for-woodfire.vercel.app/",
     "accentColor": "#f59e0b"
   },
   {
     "id": 3,
-    "title": "Local Cafe Hub",
+    "title": "Rainbow Cafe",
     "clientType": "Food & Beverage",
     "shortPitch": "A beautiful, smooth-scrolling menu and location guide.",
     "techStack": ["React", "Tailwind", "Framer Motion"],
-    "imagePath": "/src/assets/projects/cafe-preview.jpg",
-    "liveLink": "https://your-live-link.com",
+    "imagePath": "/rainbow.png",
+    "liveLink": "https://rainbowcafe.vercel.app/",
     "accentColor": "#ef4444"
+  },
+  {
+    "id": 4,
+    "title": "Biswajit Gym",
+    "clientType": "Fitness & Wellness",
+    "shortPitch": "A modern, energetic website to promote fitness classes and training programs.",
+    "techStack": ["React", "Tailwind", "Framer Motion"],
+    "imagePath": "/gym.png",
+    "liveLink": "https://biswajitgym.vercel.app/",
+    "accentColor": "#3b82f6"
+  },
+  {
+    "id": 5,
+    "title": "Wow Wow Cafe",
+    "clientType": "Mind-Blowing Food & Beverage",
+    "shortPitch": "A vibrant, dynamic website to showcase the cafe's unique menu and atmosphere.",
+    "techStack": ["React", "Tailwind", "Framer Motion"],
+    "imagePath": "/wowwow.png",
+    "liveLink": "https://wowwowcafe.vercel.app/",
+    "accentColor": "#8b5cf6"
   }
 ]

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-// The Strategic Quotes (Mixed English & Bonglish)
+// The Strategic Quotes
 const PRO_QUOTES = [
   "24/7 Open for Business",
   "Dokan bondho holeo website khola thakbe",
@@ -24,6 +24,16 @@ const PRO_QUOTES = [
   "Sob details ek jaigai thakbe",
   "Dominate Local Searches",
   "Trust barle business barbe",
+];
+
+// Define 6 distinct non-overlapping zones on the screen
+const BUBBLE_ZONES = [
+  { xMin: 5, xMax: 25, yMin: 10, yMax: 30 }, // Top Left
+  { xMin: 75, xMax: 95, yMin: 10, yMax: 30 }, // Top Right
+  { xMin: 2, xMax: 18, yMin: 45, yMax: 65 }, // Mid Left
+  { xMin: 82, xMax: 98, yMin: 45, yMax: 65 }, // Mid Right
+  { xMin: 8, xMax: 25, yMin: 75, yMax: 85 }, // Bottom Left
+  { xMin: 75, xMax: 92, yMin: 75, yMax: 85 }, // Bottom Right
 ];
 
 export default function Hero() {
@@ -92,32 +102,26 @@ export default function Hero() {
         repeat: -1,
       });
 
-      // 5. COMIC-STYLE THOUGHT BUBBLE ENGINE
+      // 5. ZONE-BASED THOUGHT BUBBLE ENGINE
       const bubbles = gsap.utils.toArray(".quote-bubble");
 
       bubbles.forEach((bubble, i) => {
+        const zone = BUBBLE_ZONES[i]; // Assign each bubble strictly to its own zone
+
         const animateBubble = () => {
           const randomQuote =
             PRO_QUOTES[Math.floor(Math.random() * PRO_QUOTES.length)];
           bubble.innerText = randomQuote;
 
-          // Generate random X and Y anywhere on the screen
-          let xPos = gsap.utils.random(10, 90);
-          let yPos = gsap.utils.random(15, 80);
+          // Generate coordinates strictly within this bubble's assigned zone
+          const xPos = gsap.utils.random(zone.xMin, zone.xMax);
+          const yPos = gsap.utils.random(zone.yMin, zone.yMax);
 
-          // Smart logic: Dodge the exact center so the main title isn't completely blocked
-          if (xPos > 35 && xPos < 65 && yPos > 35 && yPos < 65) {
-            xPos =
-              Math.random() > 0.5
-                ? gsap.utils.random(5, 25)
-                : gsap.utils.random(75, 95);
-          }
-
-          // Apply Comic Tilt & Position instantly while invisible
+          // Apply Comic Tilt & Position
           gsap.set(bubble, {
             left: xPos + "%",
             top: yPos + "%",
-            rotation: gsap.utils.random(-15, 15), // Crazy comic tilt
+            rotation: gsap.utils.random(-15, 15),
             xPercent: -50,
             yPercent: -50,
           });
@@ -126,24 +130,21 @@ export default function Hero() {
           const bubbleTl = gsap.timeline({ onComplete: animateBubble });
 
           bubbleTl
-            // Pop in fast and bouncy
             .to(bubble, {
               opacity: 1,
-              scale: gsap.utils.random(0.9, 1.2), // Slight size variation
+              scale: gsap.utils.random(0.9, 1.1),
               duration: 0.5,
-              ease: "back.out(2.5)", // Heavy overshoot for that comic book POP
+              ease: "back.out(2.5)",
             })
-            // Slowly float upwards while the person is "thinking"
             .to(
               bubble,
               {
-                y: "-=40",
+                y: "-=30", // Shorter float so it doesn't drift into another zone
                 duration: 3.5,
                 ease: "none",
               },
               "<",
-            ) // Starts at the same time as the pop-in
-            // Snap closed
+            )
             .to(
               bubble,
               {
@@ -153,11 +154,11 @@ export default function Hero() {
                 ease: "power2.in",
               },
               "-=0.3",
-            ); // Overlaps the end of the float
+            );
         };
 
-        // Stagger the start times so they don't all pop at once
-        gsap.delayedCall(i * 0.9 + 2, animateBubble);
+        // Stagger start times so they keep popping sequentially
+        gsap.delayedCall(i * 1.2 + 2, animateBubble);
       });
     },
     { scope: containerRef },
@@ -183,13 +184,11 @@ export default function Hero() {
         <div className="orb absolute bottom-[10%] left-[40%] w-[350px] h-[350px] bg-zinc-400/20 rounded-full blur-[90px] mix-blend-screen"></div>
       </div>
 
-      {/* --- COMIC THOUGHT BUBBLES --- */}
-      {/* Hidden on mobile to keep the screen clean, visible on medium+ screens */}
+      {/* --- ZONE-RESTRICTED COMIC THOUGHT BUBBLES --- */}
       <div className="absolute inset-0 z-20 pointer-events-none hidden md:block">
         {[1, 2, 3, 4, 5, 6].map((_, index) => (
           <div
             key={index}
-            // Comic styling: White bg, black text, huge bold italic font, sharp bottom-left corner
             className="quote-bubble absolute opacity-0 scale-0 px-8 py-4 bg-white border-4 border-zinc-900 rounded-[2.5rem] rounded-bl-md text-black text-xl lg:text-2xl font-black italic shadow-[8px_8px_0px_rgba(0,0,0,0.5)] whitespace-nowrap"
           >
             {/* GSAP injects text here */}
@@ -214,7 +213,6 @@ export default function Hero() {
           thakbe. Rajar moto business korun.
         </p>
 
-        {/* Pointer-events-auto added back here so the button remains clickable */}
         <div className="pointer-events-auto">
           <a
             href="#work"
