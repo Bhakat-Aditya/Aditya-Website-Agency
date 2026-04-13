@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  
+  /* Ensure links and buttons don't show the default pointer either */
+  a, button, .cursor-hover {
+    cursor: none; 
+  }
+}

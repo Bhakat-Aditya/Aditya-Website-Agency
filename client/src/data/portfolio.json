@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Powerplay Turf Booking",
+    "clientType": "Sports & Recreation",
+    "shortPitch": "A fast, animated booking interface to maximize daily slot reservations.",
+    "techStack": ["React", "Tailwind v4", "GSAP"],
+    "imagePath": "/src/assets/projects/turf-preview.jpg",
+    "liveLink": "https://your-live-link.com",
+    "accentColor": "#10b981" 
+  },
+  {
+    "id": 2,
+    "title": "Bhakat Hardware Engine",
+    "clientType": "B2B Wholesale",
+    "shortPitch": "Smart inventory showcase focused on high-volume, direct-to-site materials.",
+    "techStack": ["MERN", "Tailwind v4"],
+    "imagePath": "/src/assets/projects/hardware-preview.jpg",
+    "liveLink": "https://your-live-link.com",
+    "accentColor": "#f59e0b"
+  },
+  {
+    "id": 3,
+    "title": "Local Cafe Hub",
+    "clientType": "Food & Beverage",
+    "shortPitch": "A beautiful, smooth-scrolling menu and location guide.",
+    "techStack": ["React", "Tailwind", "Framer Motion"],
+    "imagePath": "/src/assets/projects/cafe-preview.jpg",
+    "liveLink": "https://your-live-link.com",
+    "accentColor": "#ef4444"
+  }
+]
