@@ -7,7 +7,9 @@
     "techStack": ["React", "Tailwind v4", "GSAP"],
     "imagePath": "/powerplay.png",
     "liveLink": "https://powerplayturf.vercel.app/",
-    "accentColor": "#10b981" 
+    "accentColor": "#10b981",
+    "price": "17999",
+    "maintenance": "599/year"
   },
   {
     "id": 2,
@@ -17,7 +19,10 @@
     "techStack": ["MERN", "Tailwind v4"],
     "imagePath": "/woodfire.png",
     "liveLink": "https://time-for-woodfire.vercel.app/",
-    "accentColor": "#f59e0b"
+    "accentColor": "#f59e0b",
+    "price": "5499",
+    "maintenance": "299/year"
+
   },
   {
     "id": 3,
@@ -27,7 +32,10 @@
     "techStack": ["React", "Tailwind", "Framer Motion"],
     "imagePath": "/rainbow.png",
     "liveLink": "https://rainbowcafe.vercel.app/",
-    "accentColor": "#ef4444"
+    "accentColor": "#ef4444",
+    "price": "3999",
+    "maintenance": "299/year"
+
   },
   {
     "id": 4,
@@ -37,7 +45,9 @@
     "techStack": ["React", "Tailwind", "Framer Motion"],
     "imagePath": "/gym.png",
     "liveLink": "https://biswajitgym.vercel.app/",
-    "accentColor": "#3b82f6"
+    "accentColor": "#3b82f6",
+    "price": "4999",
+    "maintenance": "299/year"
   },
   {
     "id": 5,
@@ -47,6 +57,8 @@
     "techStack": ["React", "Tailwind", "Framer Motion"],
     "imagePath": "/wowwow.png",
     "liveLink": "https://wowwowcafe.vercel.app/",
-    "accentColor": "#8b5cf6"
+    "accentColor": "#8b5cf6",
+    "price": "4999",
+    "maintenance": "299/year"
   }
 ]
