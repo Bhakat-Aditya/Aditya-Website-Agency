@@ -22,7 +22,6 @@
     "accentColor": "#f59e0b",
     "price": "5499",
     "maintenance": "299/year"
-
   },
   {
     "id": 3,
@@ -35,7 +34,6 @@
     "accentColor": "#ef4444",
     "price": "3999",
     "maintenance": "299/year"
-
   },
   {
     "id": 4,
@@ -60,5 +58,29 @@
     "accentColor": "#8b5cf6",
     "price": "4999",
     "maintenance": "299/year"
+  },
+  {
+    "id": 6,
+    "title": "Uns Cafe",
+    "clientType": "Mind-Blowing Food & Beverage",
+    "shortPitch": "A vibrant, dynamic website to showcase the cafe's unique menu and atmosphere.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/unscafe.png",
+    "liveLink": "https://uns-cafe.vercel.app/",
+    "accentColor": "#5b4a8a",
+    "price": "6499",
+    "maintenance": "599/year"
+  },
+  {
+    "id": 7,
+    "title": "Spoonful Cafe",
+    "clientType": "Mind-Blowing Food & Beverage",
+    "shortPitch": "A vibrant, dynamic website to showcase the cafe's unique menu and atmosphere.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/spoonful.png",
+    "liveLink": "https://spoonful-cafe.vercel.app/",
+    "accentColor": "#4c51bf",
+    "price": "4999",
+    "maintenance": "399/year"
   }
 ]
