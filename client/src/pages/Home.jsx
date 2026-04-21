@@ -1,6 +1,7 @@
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Pricing from '../components/Pricing';
+import SeoMidnapore from '../components/SeoMidnapore';
 import WorksTunnel from '../components/WorksTunnel';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <WorksTunnel />
       <Pricing />
+      <SeoMidnapore />
       <Footer />
     </main>
   );
