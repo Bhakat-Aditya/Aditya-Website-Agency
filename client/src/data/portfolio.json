@@ -82,5 +82,17 @@
     "accentColor": "#4c51bf",
     "price": "4999",
     "maintenance": "399/year"
+  },
+  {
+    "id": 8,
+    "title": "Art Cafe",
+    "clientType": "Mind-Blowing Food & Beverage",
+    "shortPitch": "A vibrant, dynamic website to showcase the cafe's unique menu and atmosphere.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/art.png",
+    "liveLink": "https://art-cafe-swart.vercel.app/",
+    "accentColor": "#ef45",
+    "price": "7999",
+    "maintenance": "199/year"
   }
 ]
