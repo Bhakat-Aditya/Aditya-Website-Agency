@@ -51,7 +51,7 @@ export default function WorksTunnel() {
 
   // The Slides Array
   const tunnelItems = [
-    { id: "intro1", isIntro: true, title: "SEE MY WORKS" },
+    { id: "intro1", isIntro: true, title: "HERE ARE MY WORKS" },
     { id: "intro2", isBonglishPitch: true, title: "The Capability Pitch" },
     ...projectsData,
   ];
