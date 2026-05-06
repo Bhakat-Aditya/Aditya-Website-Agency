@@ -94,5 +94,17 @@
     "accentColor": "#ef45",
     "price": "7999",
     "maintenance": "199/year"
+  },
+  {
+    "id": 8,
+    "title": "How Mou Khow Momo",
+    "clientType": "Tasty juicy Momo",
+    "shortPitch": "A website that represents the deliciousness of momos with vibrant colors and smooth animations.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/how-mou-khow-momo.png",
+    "liveLink": "https://how-mou-khow-momo.vercel.app/",
+    "accentColor": "#ef4444",
+    "price": "4999",
+    "maintenance": "159/year"
   }
 ]
