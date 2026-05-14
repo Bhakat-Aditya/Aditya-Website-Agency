@@ -1,4 +1,5 @@
 import AboutMe from '../components/AboutMe';
+import AwwwardsRecognition from '../components/AwwwardsRecognition';
 import Comparison from '../components/Comparison';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
@@ -8,6 +9,7 @@ import Pricing from '../components/Pricing';
 import Process from '../components/Process';
 import SeoMidnapore from '../components/SeoMidnapore';
 import Testimonials from '../components/Testimonials';
+import TrustMetrics from '../components/TrustMetrics';
 import WhatIBuild from '../components/WhatIBuild';
 import WorksTunnel from '../components/WorksTunnel';
 
@@ -19,6 +21,8 @@ export default function Home() {
       <Process />
       <AboutMe />
       <Comparison />
+      <TrustMetrics />
+      <AwwwardsRecognition />
       <WorksTunnel />
       <Testimonials />
       <Pricing />

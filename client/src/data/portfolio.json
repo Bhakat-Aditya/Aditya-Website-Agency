@@ -96,7 +96,7 @@
     "maintenance": "199/year"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "How Mou Khow Momo",
     "clientType": "Tasty juicy Momo",
     "shortPitch": "A website that represents the deliciousness of momos with vibrant colors and smooth animations.",
@@ -105,6 +105,18 @@
     "liveLink": "https://how-mou-khow-momo.vercel.app/",
     "accentColor": "#ef4444",
     "price": "4999",
+    "maintenance": "159/year"
+  },
+  {
+    "id": 10,
+    "title": "The Decor Art Home",
+    "clientType": "Home Decor & Art",
+    "shortPitch": "A stylish, modern website to showcase home decor products and art pieces with smooth animations.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/thedecorarthome.png",
+    "liveLink": "https://thedecorarthome.vercel.app/",
+    "accentColor": "#ef4",
+    "price": "3999",
     "maintenance": "159/year"
   }
 ]
