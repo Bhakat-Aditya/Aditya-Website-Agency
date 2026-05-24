@@ -222,12 +222,12 @@ export default function WorksTunnel() {
                 <p className="text-zinc-400 text-base md:text-lg mb-6">
                   {item.shortPitch}
                 </p>
-                <p className="text-xl text-yellow-500 font-semibold">
+                {/* <p className="text-xl text-yellow-500 font-semibold">
                   One-Time Price: ₹{item.price || "Custom"}
                 </p>
                 <p className="text-sm text-zinc-300">
                   Yearly Maintenance: ₹{item.maintenance || "Included"}
-                </p>
+                </p> */}
 
                 <div className="flex mt-4 flex-wrap gap-2 mb-8">
                   {item.techStack.map((tech, index) => (

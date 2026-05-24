@@ -25,7 +25,7 @@ export default function Home() {
       <AwwwardsRecognition />
       <WorksTunnel />
       <Testimonials />
-      <Pricing />
+      {/* <Pricing /> */}
       <WhatIBuild />
       <SeoMidnapore />
       <FAQ />
