@@ -19,3 +19,17 @@
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: white;
+  color: black;
+}
