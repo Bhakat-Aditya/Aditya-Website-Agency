@@ -100,8 +100,9 @@ export default function AboutMe() {
           <div className="space-y-6">
             <p className="about-text text-zinc-400 text-lg md:text-xl leading-relaxed">
               I build high-performance digital storefronts for local businesses
-              right here in Midnapore. My goal is simple: to make your business
-              look like the most premium option in town.
+              across West Bengal — from Midnapore to Kolkata, Kharagpur to
+              Howrah. My goal is simple: to make your business look like the
+              most premium option in your city.
             </p>
 
             <p className="about-text text-zinc-400 text-lg md:text-xl leading-relaxed">
@@ -119,7 +120,7 @@ export default function AboutMe() {
 
           <div className="about-text flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-10">
             <div className="px-6 py-3 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs font-mono tracking-widest uppercase text-zinc-300">
-              📍 Midnapore Based
+              📍 West Bengal, India
             </div>
             <div className="px-6 py-3 rounded-full border border-amber-500/30 bg-amber-500/10 text-xs font-mono tracking-widest uppercase text-amber-400">
               ⚡ Custom Code (MERN)

@@ -88,7 +88,7 @@ const LiveClock = () => {
   return (
     <div className="flex items-center gap-2 text-zinc-400 font-mono text-xs md:text-sm tracking-widest bg-zinc-900/50 px-4 py-2 rounded-full border border-zinc-800 backdrop-blur-md">
       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-      MIDNAPORE, WB • {time || "00:00:00"}
+      WEST BENGAL, IN • {time || "00:00:00"}
     </div>
   );
 };
