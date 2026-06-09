@@ -10,6 +10,10 @@
   }
 }
 
+*{
+  user-select: none;
+}
+
 /* KILLS DEFAULT SCROLLBAR COMPLETELY */
 ::-webkit-scrollbar {
   display: none; 
@@ -32,4 +36,25 @@ html {
 ::selection {
   background: white;
   color: black;
+}
+
+/* RESTORE BROWSER CURSOR FOR SPECIFIC WIDGETS */
+.no-custom-cursor,
+.no-custom-cursor * {
+  cursor: auto !important;
+}
+
+.no-custom-cursor a,
+.no-custom-cursor button,
+.no-custom-cursor input,
+.no-custom-cursor select,
+.no-custom-cursor textarea,
+.no-custom-cursor [role="button"],
+.no-custom-cursor .cursor-pointer {
+  cursor: pointer !important;
+}
+
+.no-custom-cursor input[type="text"],
+.no-custom-cursor textarea {
+  cursor: text !important;
 }

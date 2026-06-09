@@ -423,10 +423,7 @@ export default function Hero() {
     /* 6 ▶ Social proof row */
     tl.fromTo(".social-proof", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.5");
 
-    /* 7 ▶ CTA circle spins in */
-    tl.fromTo(".hero-cta-wrap",
-      { scale: 0, rotation: -60, opacity: 0 },
-      { scale: 1, rotation: 0, opacity: 1, duration: 0.9, ease: "back.out(1.4)" }, "-=0.55");
+
 
     /* 8 ▶ Bottom bar slides up */
     tl.fromTo(".hero-bottom-bar", { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75 }, "-=0.5");
@@ -754,71 +751,6 @@ export default function Hero() {
                     transition: "color 0.3s, border-color 0.3s",
                   }}>
                     +91 94764 77956 — Free Consult
-                  </span>
-                </MagneticBtn>
-              </div>
-
-              {/* RIGHT — Morphing circle CTA */}
-              <div className="hero-cta-wrap" style={{ flexShrink: 0, alignSelf: "center", marginBottom: "0.5rem" }}>
-                <MagneticBtn
-                  onClick={() => {
-                    const f = document.querySelector("footer");
-                    if (f) f.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="group"
-                  style={{
-                    position: "relative", display: "flex",
-                    alignItems: "center", justifyContent: "center",
-                    width: "clamp(108px, 14.5vw, 165px)",
-                    height: "clamp(108px, 14.5vw, 165px)",
-                  }}
-                >
-                  {/* Rotating amber arc */}
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 165 165"
-                    fill="none"
-                    style={{ animation: "rotate-ring 3.5s linear infinite", transformOrigin: "center" }}
-                  >
-                    <defs>
-                      <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#fbbf24" stopOpacity="0" />
-                        <stop offset="45%" stopColor="#fbbf24" stopOpacity="1" />
-                        <stop offset="100%" stopColor="#fbbf24" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="82.5" cy="82.5" r="80" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
-                    <circle cx="82.5" cy="82.5" r="80" stroke="url(#arcGrad)" strokeWidth="1.5" strokeDasharray="180 322" strokeLinecap="round" />
-                  </svg>
-
-                  {/* Hover fill disc */}
-                  <div
-                    className="absolute rounded-full scale-0 group-hover:scale-100"
-                    style={{
-                      inset: 3, background: "#fbbf24",
-                      transition: "transform 0.5s cubic-bezier(0.34,1.56,0.64,1)",
-                    }}
-                  />
-
-                  {/* Icon + label */}
-                  <span className="relative z-10 flex flex-col items-center gap-1.5">
-                    <svg
-                      style={{
-                        width: "clamp(16px,1.5vw,22px)", height: "clamp(16px,1.5vw,22px)",
-                        color: "#fbbf24", flexShrink: 0,
-                        transition: "color 0.3s, transform 0.35s",
-                      }}
-                      className="group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1"
-                      fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15M4.5 4.5h15v15" />
-                    </svg>
-                    <span
-                      className="text-white text-center font-black leading-tight group-hover:text-black"
-                      style={{ fontSize: "clamp(7px,0.85vw,10px)", letterSpacing: "0.16em", textTransform: "uppercase", transition: "color 0.3s" }}
-                    >
-                      START<br/>PROJECT
-                    </span>
                   </span>
                 </MagneticBtn>
               </div>

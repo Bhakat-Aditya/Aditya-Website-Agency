@@ -32,7 +32,16 @@ export default function CustomCursor() {
       ease: "power3.out",
     });
 
+    let isHidden = false;
     const moveCursor = (e) => {
+      const isOverNoCursor = e.target && e.target.closest && e.target.closest(".no-custom-cursor");
+      if (isOverNoCursor && !isHidden) {
+        isHidden = true;
+        gsap.to(cursorRef.current, { opacity: 0, duration: 0.15 });
+      } else if (!isOverNoCursor && isHidden) {
+        isHidden = false;
+        gsap.to(cursorRef.current, { opacity: 1, duration: 0.15 });
+      }
       xMove(e.clientX);
       yMove(e.clientY);
     };
@@ -49,6 +58,7 @@ export default function CustomCursor() {
 
     // Subtle Hover Effects (No massive enlargement)
     const handleMouseOver = (e) => {
+      if (e.target.closest(".no-custom-cursor")) return;
       if (e.target.closest(".cursor-hover")) {
         // Dot turns amber and scales just slightly
         gsap.to(dotRef.current, {
@@ -67,6 +77,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseOut = (e) => {
+      if (e.target.closest(".no-custom-cursor")) return;
       if (e.target.closest(".cursor-hover")) {
         // Return to default state
         gsap.to(dotRef.current, {
