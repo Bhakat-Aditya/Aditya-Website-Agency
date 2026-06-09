@@ -16,9 +16,10 @@ export default function VirtualConsultant() {
   const [hasUnread, setHasUnread] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
   const [step, setStep] = useState(STEPS.GREETING);
-  const [inputValue, setInputValue] = useState("");
-  const [showInput, setShowInput] = useState(false);
+  
+  // Stored Lead Data
   const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
   
   const [messages, setMessages] = useState([]);
   
@@ -65,7 +66,7 @@ export default function VirtualConsultant() {
   // Auto scroll to bottom of chat whenever messages change or typing changes
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isTyping, showInput]);
+  }, [messages, isTyping]);
 
   // GSAP animation for chat window slide open/close
   useGSAP(() => {
@@ -84,14 +85,14 @@ export default function VirtualConsultant() {
 
   const triggerBotResponse = (userText, currentStep = step) => {
     setIsTyping(true);
-    setShowInput(false);
 
     setTimeout(() => {
       let responseMessages = [];
       let nextStep = currentStep;
-      let nextShowInput = false;
 
       if (userText === "Start a New Chat 🔄") {
+        setSelectedIndustry("");
+        setSelectedPlan("");
         responseMessages.push({
           id: Date.now(),
           sender: "bot",
@@ -118,32 +119,32 @@ export default function VirtualConsultant() {
 
         if (userText.includes("Cafe")) {
           pitch = "Awesome! For a **Cafe & Restaurant**, a website is your 24/7 menu and booking engine. It builds trust and steals hungry customers from competitors! 🌟";
-          package1 = "**1. Essential Menu Site**: Perfect for showcasing your menu and location. (₹4,500 - ₹6,000)";
-          package2 = "**2. Full Ordering System**: Online food ordering, reservations, & admin dashboard. (₹15,000+)";
+          package1 = "Option 1: Essential Menu Site (₹4,500 - ₹6,000)";
+          package2 = "Option 2: Full Ordering System (₹15,000+)";
         } else if (userText.includes("Gym")) {
           pitch = "Great! A strong online presence for a **Gym & Fitness** center means more walk-ins and memberships. Show off your equipment and trainers! 💪";
-          package1 = "**1. Landing Page**: Lead generation form, pricing, and facility showcase. (₹5,000 - ₹8,000)";
-          package2 = "**2. Member Portal**: Automated class scheduling, member logins, and workout tracking. (₹15,000+)";
+          package1 = "Option 1: Landing Page Showcase (₹5,000 - ₹8,000)";
+          package2 = "Option 2: Member Portal (₹15,000+)";
         } else if (userText.includes("Hardware") || userText.includes("Retail")) {
           pitch = "Perfect! For **Hardware & Retail**, a website establishes instant authority locally so people call you before visiting the store. 🛠️";
-          package1 = "**1. Digital Catalog**: Showcase top products, brands, and contact info. (₹6,000 - ₹9,000)";
-          package2 = "**2. E-Commerce Store**: Full-scale online shop with inventory tracking & payments. (₹18,000+)";
+          package1 = "Option 1: Digital Catalog (₹6,000 - ₹9,000)";
+          package2 = "Option 2: E-Commerce Store (₹18,000+)";
         } else if (userText.includes("Hotel")) {
           pitch = "Fantastic! A **Hotel & Resort** needs a premium, highly visual website to convince guests to book directly with you instead of third-party apps. 🌴";
-          package1 = "**1. Premium Showcase**: High-end visuals, gallery, and direct WhatsApp booking. (₹8,000 - ₹12,000)";
-          package2 = "**2. Direct Booking Engine**: Full room availability calendars and payment gateways. (₹20,000+)";
+          package1 = "Option 1: Premium Showcase (₹8,000 - ₹12,000)";
+          package2 = "Option 2: Direct Booking Engine (₹20,000+)";
         } else if (userText.includes("Clinic")) {
           pitch = "Excellent! Patients look for trust. A **Clinic & Healthcare** website ensures you look professional and easy to reach. 🩺";
-          package1 = "**1. Practice Overview**: Services, doctor profiles, and location. (₹5,000 - ₹7,000)";
-          package2 = "**2. Appointment System**: Secure patient booking and consultation scheduling. (₹12,000+)";
+          package1 = "Option 1: Practice Overview (₹5,000 - ₹7,000)";
+          package2 = "Option 2: Appointment System (₹12,000+)";
         } else if (userText.includes("Portfolio")) {
           pitch = "A **Personal Portfolio** is your ultimate digital business card. High-end personal branding with smooth animations will make you stand out! ✨";
-          package1 = "**1. Standard Portfolio**: Clean, professional, and fast. (₹3,000 - ₹5,000)";
-          package2 = "**2. Premium Animated**: GSAP scroll animations and high-end creative showcase. (₹8,000+)";
+          package1 = "Option 1: Standard Portfolio (₹3,000 - ₹5,000)";
+          package2 = "Option 2: Premium Animated (₹8,000+)";
         } else {
           pitch = "Got it! No matter the industry, a website is your **24/7 sales engine** that builds credibility and steals customers from competitors! 🚀";
-          package1 = "**1. Standard Landing Page**: Optimized for speed and local SEO. (₹4,500 - ₹8,000)";
-          package2 = "**2. Custom MERN Platform**: Dashboards, databases, and advanced features. (₹15,000+)";
+          package1 = "Option 1: Standard Landing Page (₹4,500 - ₹8,000)";
+          package2 = "Option 2: Custom MERN Platform (₹15,000+)";
         }
 
         responseMessages.push({
@@ -155,7 +156,7 @@ export default function VirtualConsultant() {
         responseMessages.push({
           id: Date.now() + 1,
           sender: "bot",
-          text: `We have two main approaches for this:\n\n${package1}\n\n${package2}`,
+          text: `We have two main approaches for this:\n\n**${package1}**\n\n**${package2}**`,
           timestamp: new Date(),
         });
         responseMessages.push({
@@ -164,8 +165,8 @@ export default function VirtualConsultant() {
           text: "Which approach sounds like a better fit for your goals?",
           timestamp: new Date(),
           options: [
-            "Option 1 (Standard/Essential)",
-            "Option 2 (Full/Premium)",
+            package1,
+            package2,
             "Why should I choose you? 🤔"
           ],
         });
@@ -197,6 +198,7 @@ export default function VirtualConsultant() {
         nextStep = STEPS.PACKAGE_SELECTED;
       }
       else if (currentStep === STEPS.PACKAGE_SELECTED && (userText.includes("Option 1") || userText.includes("Option 2"))) {
+        setSelectedPlan(userText);
         responseMessages.push({
           id: Date.now(),
           sender: "bot",
@@ -212,24 +214,33 @@ export default function VirtualConsultant() {
         responseMessages.push({
           id: Date.now() + 2,
           sender: "bot",
-          text: "Are you ready to claim your free hosting and get your site live in under a week? Drop your contact info so we can finalize a custom quote for you! 📲",
+          text: "Are you ready to claim your free hosting and get your site live in under a week? Click below to send us your requirements directly on WhatsApp! 📲",
           timestamp: new Date(),
           options: [
-            "Enter Contact Details",
+            "Send on WhatsApp 🟢",
             "Maybe later"
           ],
         });
         nextStep = STEPS.ASK_CONTACT;
       }
-      else if (userText === "Enter Contact Details") {
+      else if (userText === "Send on WhatsApp 🟢") {
+        // Generate WhatsApp link
+        const currentIndustry = selectedIndustry || "Custom Project";
+        const currentPlan = selectedPlan || "To be discussed";
+        const message = `Hi Aditya! I am interested in starting a project.\n\n*Industry:* ${currentIndustry}\n*Selected Plan:* ${currentPlan}\n\nLet's discuss further!`;
+        const waUrl = `https://wa.me/919476477956?text=${encodeURIComponent(message)}`;
+        
+        // Open WhatsApp in new tab
+        window.open(waUrl, "_blank");
+
         responseMessages.push({
           id: Date.now(),
           sender: "bot",
-          text: "Great! Please type your phone number or email below.",
+          text: "Redirecting you to WhatsApp! See you there. 🚀",
           timestamp: new Date(),
+          options: ["Start a New Chat 🔄"],
         });
-        nextStep = STEPS.COMPLETED; // We are waiting for the input now
-        nextShowInput = true;
+        nextStep = STEPS.COMPLETED;
       }
       else if (userText === "Maybe later") {
         responseMessages.push({
@@ -239,17 +250,7 @@ export default function VirtualConsultant() {
           timestamp: new Date(),
           options: ["Start a New Chat 🔄"],
         });
-        nextStep = STEPS.GREETING;
-      }
-      else if (currentStep === STEPS.COMPLETED) {
-        responseMessages.push({
-          id: Date.now(),
-          sender: "bot",
-          text: `Thank you! I have recorded your details: **${userText}**.\n\nAditya will personally reach out to you shortly to go over your exact requirements. Let's make your digital presence unstoppable! 🚀`,
-          timestamp: new Date(),
-          options: ["Start a New Chat 🔄"],
-        });
-        nextStep = STEPS.GREETING;
+        nextStep = STEPS.COMPLETED;
       }
       else {
         // Fallback
@@ -274,7 +275,6 @@ export default function VirtualConsultant() {
           if (index === responseMessages.length - 1) {
             setIsTyping(false);
             setStep(nextStep);
-            setShowInput(nextShowInput);
           }
         }, currentDelay);
         // Delay is longer for longer messages to seem natural
@@ -282,25 +282,6 @@ export default function VirtualConsultant() {
       });
 
     }, 600);
-  };
-
-  const handleSend = (text = inputValue) => {
-    if (!text.trim()) return;
-
-    const newMsg = {
-      id: Date.now(),
-      sender: "user",
-      text,
-      timestamp: new Date(),
-    };
-
-    setMessages((prev) => {
-      // Remove options from previous bot messages when user replies
-      const updatedPrev = prev.map(m => m.sender === "bot" ? { ...m, options: [] } : m);
-      return [...updatedPrev, newMsg];
-    });
-    setInputValue("");
-    triggerBotResponse(text);
   };
 
   const handleOptionClick = (option) => {
@@ -430,18 +411,25 @@ export default function VirtualConsultant() {
                   {/* Render Quick Options nested within the chat bubble */}
                   {msg.options && msg.options.length > 0 && (
                     <div className="flex flex-wrap gap-2.5 pt-4 mt-3 border-t border-zinc-700/50">
-                      {msg.options.map((opt, index) => (
-                        <button
-                          key={index}
-                          onClick={() => handleOptionClick(opt)}
-                          className="bg-zinc-900/80 border border-zinc-600/50 hover:border-amber-400/80 hover:bg-amber-500/10 hover:text-amber-300 text-[12.5px] font-bold py-2.5 px-4 rounded-xl text-zinc-300 transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm cursor-pointer w-full text-left flex items-center justify-between group"
-                        >
-                          <span>{opt}</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      ))}
+                      {msg.options.map((opt, index) => {
+                        const isWhatsapp = opt.includes("WhatsApp");
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => handleOptionClick(opt)}
+                            className={`w-full text-left flex items-center justify-between group py-2.5 px-4 rounded-xl text-[12.5px] font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm cursor-pointer ${
+                              isWhatsapp
+                                ? "bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500 hover:text-zinc-950 shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+                                : "bg-zinc-900/80 border border-zinc-600/50 text-zinc-300 hover:border-amber-400/80 hover:bg-amber-500/10 hover:text-amber-300"
+                            }`}
+                          >
+                            <span>{opt}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${isWhatsapp ? 'text-current' : 'text-amber-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -464,29 +452,6 @@ export default function VirtualConsultant() {
 
           <div ref={chatEndRef} className="h-2" />
         </div>
-
-        {/* Footer Input Area - ONLY shown when we explicitly ask for contact details */}
-        {showInput && (
-          <div className="p-4 border-t border-zinc-800/60 bg-zinc-900/50 backdrop-blur-xl flex items-center gap-3 animate-fade-in relative z-10">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder="Enter email or phone number..."
-              className="flex-grow bg-zinc-950/80 border border-zinc-700 hover:border-zinc-500 focus:border-amber-500/80 focus:ring-1 focus:ring-amber-500/50 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-all shadow-inner"
-            />
-            <button
-              onClick={() => handleSend()}
-              className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 w-12 h-12 rounded-2xl flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-[0_5px_15px_rgba(245,158,11,0.3)] cursor-pointer"
-              aria-label="Send details"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        )}
       </div>
     </>
   );
