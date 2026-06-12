@@ -586,26 +586,6 @@ export default function Hero() {
             >
               Est.&nbsp;2023&nbsp;·&nbsp;Midnapore,&nbsp;West&nbsp;Bengal
             </span>
-
-            {/* Scarcity urgency badge */}
-            <div
-              className="urgency-badge flex items-center gap-2 px-3 py-1.5 rounded-full border"
-              style={{
-                borderColor: "rgba(239,68,68,0.3)",
-                background: "rgba(239,68,68,0.06)",
-                animation: "badge-pulse 2.2s ease-in-out infinite",
-              }}
-            >
-              <span className="relative flex" style={{ width: 7, height: 7 }}>
-                <span className="animate-ping absolute inline-flex rounded-full opacity-75"
-                  style={{ inset: 0, background: "#ef4444" }} />
-                <span className="relative inline-flex rounded-full"
-                  style={{ width: 7, height: 7, background: "#ef4444" }} />
-              </span>
-              <span style={{ fontFamily: "monospace", fontSize: "clamp(9px,1vw,10.5px)", letterSpacing: "0.18em", color: "#fca5a5", fontWeight: 700, textTransform: "uppercase" }}>
-                3 Spots Left This Month
-              </span>
-            </div>
           </div>
 
           {/* ── HERO HEADLINE ─────────────────────────────────── */}
