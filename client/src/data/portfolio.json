@@ -118,5 +118,41 @@
     "accentColor": "#ef4",
     "price": "3999",
     "maintenance": "159/year"
+  },
+  {
+    "id": 11,
+    "title": "Medipath Laboratory",
+    "clientType": "Clinical Laboratory & Diagnostics",
+    "shortPitch": "A full stack website to showcase laboratory services and facilitate online bookings with smooth animations.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/medipath.webp",
+    "liveLink": "https://medipath.in/",
+    "accentColor": "#ef4",
+    "price": "3999",
+    "maintenance": "159/year"
+  },
+  {
+    "id": 12,
+    "title": "Eccopupls",
+    "clientType": "Tissue Paper manufacturer",
+    "shortPitch": "A stylish, modern website to showcase tissue paper products with smooth animations.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/eccopupls.webp",
+    "liveLink": "https://eccopupls.com",
+    "accentColor": "#ef4",
+    "price": "3999",
+    "maintenance": "159/year"
+  },
+  {
+    "id": 13,
+    "title": "Salon 88",
+    "clientType": "Beauty & Wellness",
+    "shortPitch": "A stylish, modern website to showcase salon services with smooth animations.",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "/salon88.webp",
+    "liveLink": "https://salon88.vercel.app/",
+    "accentColor": "#ef4",
+    "price": "3999",
+    "maintenance": "159/year"
   }
 ]
