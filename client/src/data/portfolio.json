@@ -133,11 +133,11 @@
   },
   {
     "id": 12,
-    "title": "Eccopupls",
+    "title": "Eccopulps",
     "clientType": "Tissue Paper manufacturer",
     "shortPitch": "A stylish, modern website to showcase tissue paper products with smooth animations.",
     "techStack": ["React", "Tailwind", "GSAP"],
-    "imagePath": "/eccopupls.webp",
+    "imagePath": "/eccopulps.webp",
     "liveLink": "https://eccopupls.com",
     "accentColor": "#ef4",
     "price": "3999",

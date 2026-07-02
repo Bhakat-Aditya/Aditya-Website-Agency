@@ -22,6 +22,14 @@ export default function SmoothScroll({ children }) {
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      prevent: (node) => {
+        // Prevent Lenis from taking over scroll when hovering over the Botpress widget
+        return (
+          node.id === "bp-web-widget" ||
+          node.id === "bp-web-widget-container" ||
+          (node.closest && node.closest("#bp-web-widget, #bp-web-widget-container, .bp-widget-widget"))
+        );
+      },
     });
 
     // 2. Sync Lenis scroll with GSAP ScrollTrigger
