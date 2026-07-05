@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AboutMe from "../components/AboutMe";
 import AwwwardsRecognition from "../components/AwwwardsRecognition";
+import IITCertification from "../components/IITCertification";
 import Comparison from "../components/Comparison";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
@@ -38,6 +39,7 @@ export default function Home() {
       <Comparison />
       <TrustMetrics />
       <AwwwardsRecognition />
+      <IITCertification />
       <WorksTunnel />
       <Testimonials />
       {/* <Pricing /> */}
