@@ -42,7 +42,7 @@ export default function Home() {
       <IITCertification />
       <WorksTunnel />
       <Testimonials />
-      {/* <Pricing /> */}
+      <Pricing />
       <WhatIBuild />
       <SeoMidnapore />
       <FAQ />
