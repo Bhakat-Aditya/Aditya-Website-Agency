@@ -234,6 +234,24 @@ const IITCertification = () => {
           </div>
         </div>
       </div>
+
+      {/* Infinite Marquee Background */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden flex whitespace-nowrap pointer-events-none z-0 opacity-[0.08]">
+        <div className="flex animate-marquee shrink-0">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-[10rem] md:text-[16rem] font-black uppercase text-white mx-8 leading-none">
+              IIT ROORKEE GRADUATE • 
+            </span>
+          ))}
+        </div>
+        <div className="flex animate-marquee shrink-0">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-[10rem] md:text-[16rem] font-black uppercase text-white mx-8 leading-none">
+              IIT ROORKEE GRADUATE • 
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
