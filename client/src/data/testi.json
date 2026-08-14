@@ -28,5 +28,35 @@
     "name": "The decor art home",
     "stars": 5,
     "review": "Thank you Aditya ji . It was a great experience working with you. Very patiently and efficiently you have created our website for @thedecorarthome . Highly recommended 👍🏻✨"
+  },
+  {
+    "id": 6,
+    "name": "Saroj Kumar Samanta",
+    "stars": 5,
+    "review": "Great work by Aditya Web Agency. I am fully satisfied with their work."
+  },
+  {
+    "id": 7,
+    "name": "Nancy Jaiswal",
+    "stars": 5,
+    "review": "Excellent job."
+  },
+  {
+    "id": 8,
+    "name": "Pinky Banerjee",
+    "stars": 5,
+    "review": ""
+  },
+  {
+    "id": 9,
+    "name": "The decor art home",
+    "stars": 5,
+    "review": "I am fully satisfied with my website design. The service provided was exceptional, and the team delivered an excellent quality of work from start to finish. I highly recommend their web design services to anyone looking for great results."
+  },
+  {
+    "id": 10,
+    "name": "SUMITRA DEV",
+    "stars": 5,
+    "review": "Got our buisness website done and believe me I got the best service possible at this price range. Recommended for every buisness owner who needs a website."
   }
 ]
