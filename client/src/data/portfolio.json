@@ -154,5 +154,17 @@
     "accentColor": "#ef4",
     "price": "3999",
     "maintenance": "159/year"
+  },
+  {
+    "id": 14,
+    "title": "Tropixie Animation Studio",
+    "clientType": "Animation Agenc",
+    "shortPitch": "A full stack website for a animation studio to showcase their team, work and reports",
+    "techStack": ["React", "Tailwind", "GSAP"],
+    "imagePath": "",
+    "liveLink": "https://www.tropixiee.com/",
+    "accentColor": "#ef4",
+    "price": "3999",
+    "maintenance": "159/year"
   }
 ]

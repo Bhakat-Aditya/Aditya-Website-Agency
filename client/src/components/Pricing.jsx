@@ -234,15 +234,16 @@ const PricingCard = ({ plan, onHover, onLeave }) => {
         <p className="text-sm font-mono tracking-[0.3em] uppercase text-zinc-500 mb-2" style={{ transform: "translateZ(20px)" }}>
           {plan.billing}
         </p>
-        <h3 className="text-3xl mt-2 font-black text-white mb-1 uppercase tracking-tighter" style={{ transform: "translateZ(30px)" }}>
+        <h3 className="text-3xl mt-2 font-black text-white mb-2 uppercase tracking-tighter" style={{ transform: "translateZ(30px)" }}>
           {plan.name}
         </h3>
-        <div
+        {/* Price section - commented out for now (uncomment to show) */}
+        {/* <div
           className="text-3xl font-black mb-6"
           style={{ color: plan.color, transform: "translateZ(40px)" }}
         >
           {plan.price}
-        </div>
+        </div> */}
 
         <p className="text-sm text-zinc-400 mb-6 leading-relaxed" style={{ transform: "translateZ(10px)" }}>
           {plan.desc}
@@ -503,7 +504,7 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
           <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase text-white italic">
-            Pick Your <span className="text-zinc-700">Plan</span>
+            Our <span className="text-zinc-700">Plans</span>
           </h1>
         </div>
 
